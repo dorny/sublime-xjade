@@ -22,7 +22,7 @@
         "1": { "name": "storage.type.function.js"},
         "2": { "name": "entity.name.function.js"}
       },
-      "end": "\\}",
+      "end": "(?<=\\})",
       "patterns": [
         { "include": "#template-args"},
         { "include": "#template-body"}
