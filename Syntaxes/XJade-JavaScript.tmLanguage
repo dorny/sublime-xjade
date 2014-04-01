@@ -329,7 +329,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>string.name.classes.tag.xjade</string>
+					<string>constant.language.classes.xjade</string>
 				</dict>
 			</dict>
 			<key>match</key>

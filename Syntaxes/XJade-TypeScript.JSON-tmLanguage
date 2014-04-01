@@ -211,7 +211,7 @@
         "1": {"name": "entity.name.tag.xml.html"},
         "2": {"name": "variable.parameter.id.xjade"},
         "3": {"name": "meta.toc-list.id.xjade"},
-        "4": {"name": "string.name.classes.tag.xjade"}
+        "4": {"name": "constant.language.class.xjade"}
       }
     },
     "tag-inline": {
