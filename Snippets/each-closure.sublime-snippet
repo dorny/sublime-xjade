@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[- $1.forEach( ($2)=> {
+	$0
+- });
+]]></content>
+	<tabTrigger>each=</tabTrigger>
+	<scope>source.xjade.ts</scope>
+	<description>forEach(fun(...){...})</description>
+</snippet>
