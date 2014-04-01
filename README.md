@@ -6,3 +6,4 @@ A SublimeText package for the [XJade](https://github.com/dorny/xjade) template l
 
 * Syntax definition
 * Comments preferences
+* Snippets
