@@ -4,10 +4,10 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
-		<string>xjade</string>
+		<string>ts-tpl</string>
 	</array>
 	<key>name</key>
-	<string>XJade</string>
+	<string>XJade - TypeScript</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -28,7 +28,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>source.js</string>
+			<string>source.ts</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -42,7 +42,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.js</string>
+					<string>meta.brace.curly.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -52,14 +52,14 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.js</string>
+					<string>meta.brace.curly.ts</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -73,7 +73,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -108,14 +108,14 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.ts</string>
 				</dict>
 			</array>
 		</dict>
 		<key>comment</key>
 		<dict>
 			<key>name</key>
-			<string>comment.js</string>
+			<string>comment.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -141,13 +141,13 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.js</string>
+					<string>punctuation.definition.comment.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>\*/</string>
 			<key>name</key>
-			<string>comment.block.js</string>
+			<string>comment.block.ts</string>
 		</dict>
 		<key>comment-block-doc</key>
 		<dict>
@@ -158,13 +158,13 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.js</string>
+					<string>punctuation.definition.comment.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>\*/</string>
 			<key>name</key>
-			<string>comment.block.documentation.js</string>
+			<string>comment.block.documentation.ts</string>
 		</dict>
 		<key>comment-line</key>
 		<dict>
@@ -173,21 +173,21 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.js</string>
+					<string>punctuation.definition.comment.ts</string>
 				</dict>
 			</dict>
 			<key>match</key>
 			<string>(//).*$
 ?</string>
 			<key>name</key>
-			<string>comment.line.double-slash.js</string>
+			<string>comment.line.double-slash.ts</string>
 		</dict>
 		<key>number</key>
 		<dict>
 			<key>match</key>
 			<string>[0-9]+</string>
 			<key>name</key>
-			<string>constant.numeric.js</string>
+			<string>constant.numeric.ts</string>
 		</dict>
 		<key>regexp</key>
 		<dict>
@@ -198,7 +198,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.js</string>
+					<string>punctuation.definition.string.begin.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -208,25 +208,25 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.js</string>
+					<string>punctuation.definition.string.end.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.regexp.js</string>
+			<string>string.regexp.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
-					<string>constant.character.escape.js</string>
+					<string>constant.character.escape.ts</string>
 				</dict>
 			</array>
 		</dict>
 		<key>string</key>
 		<dict>
 			<key>name</key>
-			<string>string.js</string>
+			<string>string.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -248,7 +248,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.js</string>
+					<string>punctuation.definition.string.begin.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -258,18 +258,18 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.js</string>
+					<string>punctuation.definition.string.end.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.double.js</string>
+			<string>string.quoted.double.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
 					<key>name</key>
-					<string>constant.character.escape.js</string>
+					<string>constant.character.escape.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -282,7 +282,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.begin.js</string>
+					<string>punctuation.definition.string.begin.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -292,18 +292,18 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.string.end.js</string>
+					<string>punctuation.definition.string.end.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>string.quoted.single.js</string>
+			<string>string.quoted.single.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
 					<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
 					<key>name</key>
-					<string>constant.character.escape.js</string>
+					<string>constant.character.escape.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -344,7 +344,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.round.js</string>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -354,7 +354,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.round.js</string>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -480,24 +480,32 @@
 		<key>template</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?&lt;!\.)(template\*)(\s+([a-zA-Z$_][\w$]*))?</string>
+			<string>\b(?:(function)|(public|private))\s+(template\*)(\s+([a-zA-Z$_][\w$]*))?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.function.js</string>
+					<string>storage.type.function.ts</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.js</string>
+					<string>storage.modifier.ts</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.ts</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>(?&lt;=\})</string>
-			<key>name</key>
-			<string>meta.function.xjade</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -519,7 +527,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.round.js</string>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -529,7 +537,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.round.js</string>
+					<string>meta.brace.round.ts</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -538,7 +546,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.js</string>
+					<string>source.ts</string>
 				</dict>
 			</array>
 		</dict>
@@ -564,6 +572,8 @@
 					<string>meta.brace.curly.xjade</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>source.xjade.ts</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -612,7 +622,7 @@
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.xjade</string>
+	<string>source.ts.tpl</string>
 	<key>uuid</key>
 	<string>7b4f5384-7557-419a-a258-ce4c810c311a</string>
 </dict>

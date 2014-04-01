@@ -1,7 +1,7 @@
 {
-  "name": "XJade",
-  "scopeName": "source.xjade",
-  "fileTypes": [ "xjade" ],
+  "name": "XJade - TypeScript",
+  "scopeName": "source.ts.tpl",
+  "fileTypes": [ "ts-tpl" ],
 
   "patterns": [
     { "include": "#string" },
@@ -10,17 +10,18 @@
 
     { "include": "#template"},
 
-    { "include": "source.js" }
+    { "include": "source.ts" }
   ],
 
   "repository": {
 
     "template": {
-      "name": "meta.function.xjade",
-      "begin": "\\b(?<!\\.)(template\\*)(\\s+([a-zA-Z$_][\\w$]*))?",
+      "begin": "\\b(?:(function)|(public|private))\\s+(template\\*)(\\s+([a-zA-Z$_][\\w$]*))?",
       "beginCaptures": {
-        "1": { "name": "storage.type.function.js"},
-        "2": { "name": "entity.name.function.js"}
+        "1": { "name": "storage.type.function.ts"},
+        "2": { "name": "storage.modifier.ts"},
+        "3": { "name": "storage.type.function.ts"},
+        "4": { "name": "entity.name.function.ts"}
       },
       "end": "(?<=\\})",
       "patterns": [
@@ -33,16 +34,17 @@
       "begin": "\\(",
       "end": "\\)",
       "beginCaptures": {
-        "0": { "name": "meta.brace.round.js" }
+        "0": { "name": "meta.brace.round.ts" }
       },
       "endCaptures": {
-        "0": { "name": "meta.brace.round.js" }
+        "0": { "name": "meta.brace.round.ts" }
       },
       "patterns": [
-        { "include": "source.js" }
+        { "include": "source.ts" }
       ]
     },
     "template-body": {
+      "name": "source.xjade.ts",
       "begin": "\\{",
       "end": "\\}",
       "beginCaptures": {
@@ -68,7 +70,7 @@
     },
 
     "comment": {
-      "name": "comment.js",
+      "name": "comment.ts",
       "patterns": [
         { "include": "#comment-block-doc" },
         { "include": "#comment-block" },
@@ -76,68 +78,68 @@
       ]
     },
     "comment-block-doc": {
-      "name": "comment.block.documentation.js",
+      "name": "comment.block.documentation.ts",
       "begin": "/\\*\\*(?!/)",
       "end": "\\*/",
       "captures": {
-        "0": { "name": "punctuation.definition.comment.js" }
+        "0": { "name": "punctuation.definition.comment.ts" }
       }
     },
     "comment-block": {
-      "name": "comment.block.js",
+      "name": "comment.block.ts",
       "begin": "/\\*",
       "end": "\\*/",
       "captures": {
-        "0": { "name": "punctuation.definition.comment.js" }
+        "0": { "name": "punctuation.definition.comment.ts" }
       }
     },
     "comment-line": {
-      "name": "comment.line.double-slash.js",
+      "name": "comment.line.double-slash.ts",
       "match": "(//).*$\n?",
       "captures": {
-        "1": { "name": "punctuation.definition.comment.js" }
+        "1": { "name": "punctuation.definition.comment.ts" }
       }
     },
 
 
 
     "string": {
-      "name": "string.js",
+      "name": "string.ts",
       "patterns": [
         { "include": "#string-quoted-single" },
         { "include": "#string-quoted-double" }
       ]
     },
     "string-quoted-single": {
-      "name": "string.quoted.single.js",
+      "name": "string.quoted.single.ts",
       "begin": "'",
       "end": "'",
       "beginCaptures": {
-        "0": { "name": "punctuation.definition.string.begin.js" }
+        "0": { "name": "punctuation.definition.string.begin.ts" }
       },
       "endCaptures": {
-        "0": { "name": "punctuation.definition.string.end.js" }
+        "0": { "name": "punctuation.definition.string.end.ts" }
       },
       "patterns": [
         {
-          "name": "constant.character.escape.js",
+          "name": "constant.character.escape.ts",
           "match": "\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)"
         }
       ]
     },
     "string-quoted-double": {
-      "name": "string.quoted.double.js",
+      "name": "string.quoted.double.ts",
       "begin": "\"",
       "end": "\"",
       "beginCaptures": {
-        "0": { "name": "punctuation.definition.string.begin.js" }
+        "0": { "name": "punctuation.definition.string.begin.ts" }
       },
       "endCaptures": {
-        "0": { "name": "punctuation.definition.string.end.js" }
+        "0": { "name": "punctuation.definition.string.end.ts" }
       },
       "patterns": [
         {
-          "name": "constant.character.escape.js",
+          "name": "constant.character.escape.ts",
           "match": "\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)"
         }
       ]
@@ -148,16 +150,16 @@
     "regexp": {
       "begin": "(?<=[=(:]|^|return|&&|\\|\\||!)\\s*(/)(?![ /*+{}?])",
       "end": "(/)[igm]*",
-      "name": "string.regexp.js",
+      "name": "string.regexp.ts",
       "endCaptures": {
-        "1": { "name": "punctuation.definition.string.end.js" }
+        "1": { "name": "punctuation.definition.string.end.ts" }
       },
       "beginCaptures": {
-        "1": { "name": "punctuation.definition.string.begin.js" }
+        "1": { "name": "punctuation.definition.string.begin.ts" }
       },
       "patterns": [
         {
-          "name": "constant.character.escape.js",
+          "name": "constant.character.escape.ts",
           "match": "\\\\."
         }
       ]
@@ -166,7 +168,7 @@
 
 
     "number": {
-      "name": "constant.numeric.js",
+      "name": "constant.numeric.ts",
       "match": "[0-9]+"
     },
 
@@ -175,18 +177,18 @@
     "code-line": {
       "begin": "^\\s*-\\s+",
       "end": "$",
-      "patterns": [{ "include": "source.js" }]
+      "patterns": [{ "include": "source.ts" }]
     },
     "code-block": {
       "begin": "(\\{)",
       "beginCaptures": {
-        "1": {"name": "meta.brace.curly.js"}
+        "1": {"name": "meta.brace.curly.ts"}
       },
       "end": "(\\})",
       "endCaptures": {
-        "1": {"name": "meta.brace.curly.js"}
+        "1": {"name": "meta.brace.curly.ts"}
       },
-      "patterns": [{ "include": "source.js" }]
+      "patterns": [{ "include": "source.ts" }]
     },
     "code-text": {
       "begin": "(\\$)(\\{)",
@@ -198,7 +200,7 @@
       "endCaptures": {
         "1": {"name": "meta.brace.curly"}
       },
-      "patterns": [{ "include": "source.js" }]
+      "patterns": [{ "include": "source.ts" }]
     },
 
 
@@ -252,10 +254,10 @@
       "begin": "\\(",
       "end": "\\)",
       "beginCaptures": {
-        "0": { "name": "meta.brace.round.js" }
+        "0": { "name": "meta.brace.round.ts" }
       },
       "endCaptures": {
-        "0": { "name": "meta.brace.round.js" }
+        "0": { "name": "meta.brace.round.ts" }
       },
       "patterns": [
         { "include": "#tag-attribute-value" }
