@@ -17,7 +17,7 @@
 
     "template": {
       "name": "meta.function.xjade",
-      "begin": "\\b(?<!\\.)(template)(\\s+([a-zA-Z$_][\\w$]*))?",
+      "begin": "\\b(?<!\\.)(template\\*)(\\s+([a-zA-Z$_][\\w$]*))?",
       "beginCaptures": {
         "1": { "name": "storage.type.function.js"},
         "2": { "name": "entity.name.function.js"}
@@ -43,7 +43,6 @@
       ]
     },
     "template-body": {
-      "name": "meta.expression.braces.curly",
       "begin": "\\{",
       "end": "\\}",
       "beginCaptures": {
@@ -52,19 +51,21 @@
       "endCaptures": {
         "0": { "name": "meta.brace.curly.xjade" }
       },
+      "patterns": [{ "include": "#template-body-elements" }]
+    },
+
+    "template-body-elements": {
       "patterns": [
         { "include": "#comment" },
         { "include": "#string" },
         { "include": "#tag" },
-        { "include": "#tag-block" },
+        { "include": "#tag-inline" },
         { "include": "#tag-attributes" },
         { "include": "#code-line" },
         { "include": "#code-block" },
         { "include": "#code-text" }
       ]
     },
-
-
 
     "comment": {
       "name": "comment.js",
@@ -211,7 +212,7 @@
         "4": {"name": "string.name.classes.tag.xjade"}
       }
     },
-    "tag-block": {
+    "tag-inline": {
       "begin": "(#)(\\{)",
       "beginCaptures": {
         "1": {"name": "constant.language.directive.mark"},
@@ -221,7 +222,7 @@
       "endCaptures": {
         "1": {"name": "meta.brace.curly"}
       },
-      "patterns": [{ "include": "source.xjade" }]
+      "patterns": [{ "include": "#template-body-elements" }]
     },
     "tag-attributes": {
       "name": "meta.expression.braces.square",

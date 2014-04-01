@@ -442,7 +442,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>tag-block</key>
+		<key>tag-inline</key>
 		<dict>
 			<key>begin</key>
 			<string>(#)(\{)</string>
@@ -473,14 +473,14 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.xjade</string>
+					<string>#template-body-elements</string>
 				</dict>
 			</array>
 		</dict>
 		<key>template</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(?&lt;!\.)(template)(\s+([a-zA-Z$_][\w$]*))?</string>
+			<string>\b(?&lt;!\.)(template\*)(\s+([a-zA-Z$_][\w$]*))?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -564,8 +564,16 @@
 					<string>meta.brace.curly.xjade</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.expression.braces.curly</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#template-body-elements</string>
+				</dict>
+			</array>
+		</dict>
+		<key>template-body-elements</key>
+		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -582,7 +590,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-block</string>
+					<string>#tag-inline</string>
 				</dict>
 				<dict>
 					<key>include</key>
