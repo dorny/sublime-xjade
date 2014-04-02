@@ -329,43 +329,11 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>constant.language.classes.xjade</string>
+					<string>constant.language.class.xjade</string>
 				</dict>
 			</dict>
 			<key>match</key>
 			<string>([a-zA-Z][a-zA-Z0-9_:-]*)?(#([a-zA-Z][a-zA-Z0-9_:-]*))?((\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*)*)</string>
-		</dict>
-		<key>tag-attribute-arg</key>
-		<dict>
-			<key>begin</key>
-			<string>\(</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.brace.round.js</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.brace.round.js</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.expression.braces.round</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#tag-attribute-value</string>
-				</dict>
-			</array>
 		</dict>
 		<key>tag-attribute-name</key>
 		<dict>
@@ -434,13 +402,20 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-attribute-arg</string>
+					<string>#tag-conditional-class-name</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag-attribute-value</string>
 				</dict>
 			</array>
+		</dict>
+		<key>tag-conditional-class-name</key>
+		<dict>
+			<key>match</key>
+			<string>\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*</string>
+			<key>name</key>
+			<string>constant.language.class.xjade</string>
 		</dict>
 		<key>tag-inline</key>
 		<dict>

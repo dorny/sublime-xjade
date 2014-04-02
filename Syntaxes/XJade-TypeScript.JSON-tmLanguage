@@ -239,7 +239,7 @@
       "patterns": [
         { "include": "#comment" },
         { "include": "#tag-attribute-name" },
-        { "include": "#tag-attribute-arg" },
+        { "include": "#tag-conditional-class-name" },
         { "include": "#tag-attribute-value" }
       ]
     },
@@ -249,19 +249,9 @@
         "1": {"name":"entity.other.attribute-name.xjade"}
       }
     },
-    "tag-attribute-arg": {
-      "name": "meta.expression.braces.round",
-      "begin": "\\(",
-      "end": "\\)",
-      "beginCaptures": {
-        "0": { "name": "meta.brace.round.ts" }
-      },
-      "endCaptures": {
-        "0": { "name": "meta.brace.round.ts" }
-      },
-      "patterns": [
-        { "include": "#tag-attribute-value" }
-      ]
+    "tag-conditional-class-name": {
+      "match": "\\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*",
+      "name": "constant.language.class.xjade"
     },
     "tag-attribute-value": {
       "patterns": [
