@@ -5,5 +5,5 @@
 ]]></content>
 	<tabTrigger>each=</tabTrigger>
 	<scope>source.xjade.ts</scope>
-	<description>forEach(fun(...){...})</description>
+	<description>- forEach(fun(…){…})</description>
 </snippet>

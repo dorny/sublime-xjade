@@ -5,5 +5,5 @@
 ]]></content>
 	<tabTrigger>else</tabTrigger>
 	<scope>source.xjade</scope>
-	<description>else {...}</description>
+	<description>- else {…}</description>
 </snippet>

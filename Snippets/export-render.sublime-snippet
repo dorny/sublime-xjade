@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[exports.render = function template* ($1) {
+	$0
+}
+]]></content>
+	<tabTrigger>exre</tabTrigger>
+	<scope>source.js.tpl</scope>
+	<description>exports.render = fun tpl*(…) {…}</description>
+</snippet>

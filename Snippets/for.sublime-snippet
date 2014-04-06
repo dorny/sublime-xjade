@@ -5,5 +5,5 @@
 ]]></content>
 	<tabTrigger>for</tabTrigger>
 	<scope>source.xjade</scope>
-	<description>for (...) {...}</description>
+	<description>- for (…) {…}</description>
 </snippet>

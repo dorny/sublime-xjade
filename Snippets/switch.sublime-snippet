@@ -7,5 +7,5 @@
 ]]></content>
 	<tabTrigger>switch</tabTrigger>
 	<scope>source.xjade</scope>
-	<description>switch (...) {...}</description>
+	<description>- switch (…) {…}</description>
 </snippet>
