@@ -295,6 +295,26 @@
 			<key>name</key>
 			<string>comment.block.documentation.js</string>
 		</dict>
+		<key>comment-block-html</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.html.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.html.js</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(&lt;!--|--&gt;)</string>
+			<key>name</key>
+			<string>comment.block.html.js</string>
+		</dict>
 		<key>comment-line</key>
 		<dict>
 			<key>captures</key>
