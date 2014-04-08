@@ -4,6 +4,6 @@
 }
 ]]></content>
 	<tabTrigger>ftpl</tabTrigger>
-	<scope>source.js.tpl,source.ts.tpl</scope>
+	<scope>source.xjade</scope>
 	<description>function template*(…) {…}</description>
 </snippet>

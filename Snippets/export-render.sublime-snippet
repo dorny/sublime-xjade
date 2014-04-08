@@ -4,6 +4,6 @@
 }
 ]]></content>
 	<tabTrigger>exre</tabTrigger>
-	<scope>source.js.tpl</scope>
+	<scope>source.xjade</scope>
 	<description>exports.render = fun @tpl(…) {…}</description>
 </snippet>
