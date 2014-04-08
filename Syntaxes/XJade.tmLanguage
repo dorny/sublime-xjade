@@ -182,7 +182,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>code-block</key>
+		<key>code-curly</key>
 		<dict>
 			<key>begin</key>
 			<string>(\{)</string>
@@ -204,39 +204,13 @@
 					<string>meta.brace.curly.js</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-inline</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-attributes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-line</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-text</string>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>
@@ -263,6 +237,38 @@
 				<dict>
 					<key>include</key>
 					<string>#misc-higlighting</string>
+				</dict>
+			</array>
+		</dict>
+		<key>code-round</key>
+		<dict>
+			<key>begin</key>
+			<string>(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.js</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>source.js</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>
@@ -293,6 +299,8 @@
 					<string>meta.brace.curly</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -400,7 +408,7 @@
 			<key>comment</key>
 			<string>The main building block</string>
 			<key>name</key>
-			<string>meta.expression.js</string>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -458,58 +466,6 @@
 				<dict>
 					<key>include</key>
 					<string>#meta-function</string>
-				</dict>
-			</array>
-		</dict>
-		<key>mate-function</key>
-		<dict>
-			<key>begin</key>
-			<string>\b(function)(?:\s+([a-zA-Z_?.$][\w?.$]*))?\s*</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.function.js</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.function.js</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.js</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(\})|(;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.brace.curly.js</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#meta-function-parameters</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#meta-function-body</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#misc-higlighting</string>
 				</dict>
 			</array>
 		</dict>
@@ -643,6 +599,124 @@
 				</dict>
 			</array>
 		</dict>
+		<key>meta-function</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(function)(?:\s+([a-zA-Z_$][\w$]*))?\s*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.function.js</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})|(;)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.curly.js</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-function-parameters</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-function-body</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#misc-higlighting</string>
+				</dict>
+			</array>
+		</dict>
+		<key>meta-function-assignment</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.ts</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.ts</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\b([a-zA-Z_$][\w$]*)\s*(?:(=)|:)\s*(?=(\bfunction\b))</string>
+		</dict>
+		<key>meta-function-assignment-quoted</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.js</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.js</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.js</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.js</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.js</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.js</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.js</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:((')([^']*)('))|((")([^"]+)(")))\s*:\s*(?=\bfunction\b)</string>
+		</dict>
 		<key>meta-function-body</key>
 		<dict>
 			<key>begin</key>
@@ -719,6 +793,10 @@
 					<key>include</key>
 					<string>#meta-variable-type</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-variable-initializer</string>
+				</dict>
 			</array>
 		</dict>
 		<key>meta-function-template</key>
@@ -763,13 +841,51 @@
 			<key>name</key>
 			<string>storage.modifier.js</string>
 		</dict>
+		<key>meta-tag-body-elements</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-inline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-attributes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code-line</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code-curly</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code-text</string>
+				</dict>
+			</array>
+		</dict>
 		<key>meta-template-body</key>
 		<dict>
 			<key>begin</key>
-			<string>\{</string>
+			<string>(\{)</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>meta.brace.curly.xjade</string>
@@ -777,21 +893,13 @@
 			</dict>
 			<key>end</key>
 			<string>(?=\})</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.brace.curly.xjade</string>
-				</dict>
-			</dict>
 			<key>name</key>
-			<string>source.xjade.js</string>
+			<string>source.xjade</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#template-body-elements</string>
+					<string>#meta-tag-body-elements</string>
 				</dict>
 			</array>
 		</dict>
@@ -1083,72 +1191,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>mtea-function-assignment</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.js</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.operator.js</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>\b([a-zA-Z_?.$][\w?.$]*)\s*(=|:)\s*(?=(\bfunction\b))</string>
-		</dict>
-		<key>mtea-function-assignment-quoted</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>string.quoted.single.js</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.js</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.js</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.js</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>string.quoted.double.js</string>
-				</dict>
-				<key>6</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.js</string>
-				</dict>
-				<key>7</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.js</string>
-				</dict>
-				<key>8</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.js</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?:((')([^']*)('))|((")([^"]+)(")))\s*:\s*(?=\bfunction\b)</string>
-		</dict>
 		<key>number</key>
 		<dict>
 			<key>match</key>
@@ -1338,7 +1380,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#code-block</string>
+					<string>#code-round</string>
 				</dict>
 			</array>
 		</dict>
@@ -1424,7 +1466,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#template-body-elements</string>
+					<string>#meta-tag-body-elements</string>
 				</dict>
 			</array>
 		</dict>
@@ -1463,47 +1505,9 @@
 				</dict>
 			</array>
 		</dict>
-		<key>template-body-elements</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-inline</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-attributes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-line</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-text</string>
-				</dict>
-			</array>
-		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.xjade</string>
+	<string>source.js</string>
 	<key>uuid</key>
 	<string>a6009cd0-e8f6-4358-85ec-90c95b772b9d</string>
 </dict>

@@ -1,6 +1,6 @@
 {
   "name": "XJade",
-  "scopeName": "source.xjade",
+  "scopeName": "source.js",
   "fileTypes": ["xjade"],
   "patterns": [
     { "include": "#shebang" },
@@ -14,7 +14,20 @@
       "match": "^#![\\S]+ node"
     },
 
-
+    "expression": {
+      "name": "source.js",
+      "comment": "The main building block",
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#module-expression" },
+        { "include": "#class-expression" },
+        { "include": "#function" },
+        { "include": "#block" },
+        { "include": "#string" },
+        { "include": "#regexp" },
+        { "include": "#misc-higlighting" }
+      ]
+    },
 
     "string-quoted-single": {
       "name": "string.quoted.single.js",
@@ -300,7 +313,8 @@
           "name": "variable.parameter.function.js",
           "match": "[a-zA-Z_$][\\w$]*"
         },
-        { "include": "#meta-variable-type" }
+        { "include": "#meta-variable-type" },
+        { "include": "#meta-variable-initializer" }
       ]
     },
     "meta-function-body": {
@@ -317,16 +331,14 @@
         { "include": "#expression" }
       ]
     },
-
-    "mtea-function-assignment": {
-      "match": "\\b([a-zA-Z_?.$][\\w?.$]*)\\s*(=|:)\\s*(?=(\\bfunction\\b))",
+    "meta-function-assignment": {
+      "match": "\\b([a-zA-Z_$][\\w$]*)\\s*(?:(=)|:)\\s*(?=(\\bfunction\\b))",
       "captures": {
-          "1": { "name": "entity.name.function.js" },
-          "2": { "name": "keyword.operator.js" }
+          "1": { "name": "entity.name.function.ts" },
+          "2": { "name": "keyword.operator.ts" }
       }
     },
-
-    "mtea-function-assignment-quoted": {
+    "meta-function-assignment-quoted": {
       "match": "(?:((')([^']*)('))|((\")([^\"]+)(\")))\\s*:\\s*(?=\\bfunction\\b)",
       "captures": {
           "1": { "name": "string.quoted.single.js" },
@@ -353,13 +365,9 @@
         { "include": "#template" }
       ]
     },
-    "mate-function": {
-      "begin": "\\b(function)(?:\\s+([a-zA-Z_?.$][\\w?.$]*))?\\s*",
+    "meta-function": {
+      "begin": "\\b(function)(?:\\s+([a-zA-Z_$][\\w$]*))?\\s*",
       "end": "(\\})|(;)",
-      "beginCaptures": {
-        "1": { "name": "storage.type.property.js" },
-        "2": { "name": "entity.name.function.js" }
-      },
       "beginCaptures": {
         "0": { "name": "meta.function.js" },
         "1": { "name": "storage.type.function.js" },
@@ -532,19 +540,17 @@
       ]
     },
     "meta-template-body": {
-      "name": "source.xjade.js",
-      "begin": "\\{",
+      "name": "source.xjade",
+      "begin": "(\\{)",
       "end": "(?=\\})",
       "beginCaptures": {
-        "0": { "name": "meta.brace.curly.xjade" }
+        "1": { "name": "meta.brace.curly.xjade" }
       },
-      "endCaptures": {
-        "0": { "name": "meta.brace.curly.xjade" }
-      },
-      "patterns": [{ "include": "#template-body-elements" }]
+      "patterns": [
+        { "include": "#meta-tag-body-elements" }
+      ]
     },
-
-    "template-body-elements": {
+    "meta-tag-body-elements": {
       "patterns": [
         { "include": "#comment" },
         { "include": "#string" },
@@ -552,57 +558,10 @@
         { "include": "#tag-inline" },
         { "include": "#tag-attributes" },
         { "include": "#code-line" },
-        { "include": "#code-block" },
+        { "include": "#code-curly" },
         { "include": "#code-text" }
       ]
     },
-
-
-    "code-line": {
-      "begin": "^\\s*-\\s+",
-      "end": "$",
-      "patterns": [
-        // { "include": "#expression" }
-        { "include": "#comment" },
-        { "include": "#string" },
-        { "include": "#regexp" },
-        { "include": "#misc-higlighting" }
-      ]
-    },
-    "code-block": {
-      "begin": "(\\{)",
-      "beginCaptures": {
-        "1": {"name": "meta.brace.curly.js"}
-      },
-      "end": "(\\})",
-      "endCaptures": {
-        "1": {"name": "meta.brace.curly.js"}
-      },
-      // "patterns": [{ "include": "#expression" }]
-      "patterns": [
-        { "include": "#comment" },
-        { "include": "#string" },
-        { "include": "#tag" },
-        { "include": "#tag-inline" },
-        { "include": "#tag-attributes" },
-        { "include": "#code-line" },
-        { "include": "#code-block" },
-        { "include": "#code-text" }
-      ]
-    },
-    "code-text": {
-      "begin": "(\\$)(\\{)",
-      "beginCaptures": {
-        "1": {"name": "keyword.operator.xjade"},
-        "2": {"name": "meta.brace.curly"}
-      },
-      "end": "(\\})",
-      "endCaptures": {
-        "1": {"name": "meta.brace.curly"}
-      },
-      "patterns": [{ "include": "#expression" }]
-    },
-
 
     "tag": {
       "match": "([a-zA-Z][a-zA-Z0-9_:-]*)?(#([a-zA-Z][a-zA-Z0-9_:-]*))?((\\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*)*)",
@@ -623,7 +582,7 @@
       "endCaptures": {
         "1": {"name": "meta.brace.curly"}
       },
-      "patterns": [{ "include": "#template-body-elements" }]
+      "patterns": [{ "include": "#meta-tag-body-elements" }]
     },
     "tag-attributes": {
       "name": "meta.expression.braces.square",
@@ -656,27 +615,64 @@
       "patterns": [
         { "include": "#string" },
         { "include": "#number" },
-        { "include": "#code-block" }
+        { "include": "#code-round" }
       ]
     },
 
-
-
-
-    "expression": {
-      "name": "meta.expression.js",
-      "comment": "The main building block",
+    "code-line": {
+      "begin": "^\\s*-\\s+",
+      "end": "$",
       "patterns": [
         { "include": "#comment" },
-        { "include": "#module-expression" },
-        { "include": "#class-expression" },
-        { "include": "#function" },
-        { "include": "#block" },
         { "include": "#string" },
         { "include": "#regexp" },
         { "include": "#misc-higlighting" }
       ]
+    },
+    "code-curly": {
+      "name": "source.js",
+      "begin": "(\\{)",
+      "beginCaptures": {
+        "1": {"name": "meta.brace.curly.js"}
+      },
+      "end": "(\\})",
+      "endCaptures": {
+        "1": {"name": "meta.brace.curly.js"}
+      },
+      "patterns": [
+        { "include": "#expression" }
+      ]
+    },
+    "code-round": {
+      "name": "source.js",
+      "begin": "(\\()",
+      "beginCaptures": {
+        "1": {"name": "meta.brace.round.js"}
+      },
+      "end": "(\\))",
+      "endCaptures": {
+        "1": {"name": "meta.brace.round.js"}
+      },
+      "patterns": [
+        { "include": "#expression" }
+      ]
+    },
+    "code-text": {
+      "name": "source.js",
+      "begin": "(\\$)(\\{)",
+      "beginCaptures": {
+        "1": {"name": "keyword.operator.xjade"},
+        "2": {"name": "meta.brace.curly"}
+      },
+      "end": "(\\})",
+      "endCaptures": {
+        "1": {"name": "meta.brace.curly"}
+      },
+      "patterns": [
+        { "include": "#expression" }
+      ]
     }
+
   },
 
   "uuid": "a6009cd0-e8f6-4358-85ec-90c95b772b9d"
