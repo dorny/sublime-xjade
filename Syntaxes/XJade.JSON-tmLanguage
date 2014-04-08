@@ -154,11 +154,26 @@
         { "include": "#expression" }
       ]
     },
+    "block-braces-square": {
+      "name": "meta.expression.braces.square",
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {
+        "0": { "name": "meta.brace.square.ts" }
+      },
+      "endCaptures": {
+        "0": { "name": "meta.brace.square.ts" }
+      },
+      "patterns": [
+        { "include": "#expression" }
+      ]
+    },
     "block": {
       "name": "block.js",
       "patterns": [
         { "include": "#block-braces-curly" },
-        { "include": "#block-braces-round" }
+        { "include": "#block-braces-round" },
+        { "include": "#block-braces-square" }
       ]
     },
 
@@ -203,7 +218,17 @@
     },
     "meta-variable-type": {
       "begin":":",
-      "end": "(?=[,);])",
+      "end": "(?=[,);=])",
+      "patterns": [
+        { "include": "#expression" }
+      ]
+    },
+    "meta-variable-initializer": {
+      "begin": "(=)",
+      "end": "(?=[,);=])",
+      "beginCaptures": {
+        "1": { "name": "keyword.operator.ts" }
+      },
       "patterns": [
         { "include": "#expression" }
       ]
@@ -220,8 +245,22 @@
         { "include": "#comment" },
         { "include": "#meta-storage-modifier" },
         { "include": "#template" },
-        { "include": "#meta-class-member-method" },
-        { "include": "#expression" }
+        { "include": "#meta-class-member-attribute" },
+        { "include": "#meta-class-member-method" }
+      ]
+    },
+    "meta-class-member-attribute": {
+      "begin": "\\b([a-zA-Z_$][\\w$]*)\\s*(?=(=|:))",
+      "end": "(;)",
+      "beginCaptures": {
+        "1": { "name": "meta.toc-list.class.member.ts" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.terminator.statement.ts" }
+      },
+      "patterns": [
+        { "include": "#meta-variable-type" },
+        { "include": "#meta-variable-initializer" }
       ]
     },
     "meta-class-member-method": {
@@ -539,7 +578,17 @@
       "endCaptures": {
         "1": {"name": "meta.brace.curly.js"}
       },
-      "patterns": [{ "include": "#expression" }]
+      // "patterns": [{ "include": "#expression" }]
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#string" },
+        { "include": "#tag" },
+        { "include": "#tag-inline" },
+        { "include": "#tag-attributes" },
+        { "include": "#code-line" },
+        { "include": "#code-block" },
+        { "include": "#code-text" }
+      ]
     },
     "code-text": {
       "begin": "(\\$)(\\{)",
