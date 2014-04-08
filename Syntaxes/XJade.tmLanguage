@@ -626,7 +626,7 @@
 		<key>meta-function-template</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(function)\s+(?=template\*)</string>
+			<string>\b(function)\s+(?=(@template))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1311,7 +1311,7 @@
 		<key>template</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(template\*)(?:\s+([a-zA-Z$_][\w$]*))?</string>
+			<string>(@template)(?:\s+([a-zA-Z$_][\w$]*))?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

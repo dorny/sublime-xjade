@@ -4,6 +4,6 @@
 - });
 ]]></content>
 	<tabTrigger>each=</tabTrigger>
-	<scope>source.xjade.ts</scope>
+	<scope>source.xjade</scope>
 	<description>- forEach(fun(…){…})</description>
 </snippet>

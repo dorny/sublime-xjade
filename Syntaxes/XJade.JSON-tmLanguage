@@ -301,7 +301,7 @@
       }
     },
     "meta-function-template": {
-      "begin": "\\b(function)\\s+(?=template\\*)",
+      "begin": "\\b(function)\\s+(?=(@template))",
       "end": "\\}",
       "beginCaptures": {
         "0": { "name": "meta.function.js" },
@@ -480,7 +480,7 @@
 
 
     "template": {
-      "begin": "\\b(template\\*)(?:\\s+([a-zA-Z$_][\\w$]*))?",
+      "begin": "(@template)(?:\\s+([a-zA-Z$_][\\w$]*))?",
       "beginCaptures": {
         "1": { "name": "storage.type.template.xjade"},
         "2": { "name": "entity.name.function.js"}
