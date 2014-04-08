@@ -14,7 +14,20 @@
       "match": "^#![\\S]+ node"
     },
 
-
+    "expression": {
+      "name": "source.js",
+      "comment": "The main building block",
+      "patterns": [
+        { "include": "#comment" },
+        { "include": "#module-expression" },
+        { "include": "#class-expression" },
+        { "include": "#function" },
+        { "include": "#block" },
+        { "include": "#string" },
+        { "include": "#regexp" },
+        { "include": "#misc-higlighting" }
+      ]
+    },
 
     "string-quoted-single": {
       "name": "string.quoted.single.js",
@@ -541,68 +554,34 @@
       "endCaptures": {
         "0": { "name": "meta.brace.curly.xjade" }
       },
-      "patterns": [{ "include": "#template-body-elements" }]
+      "patterns": [{ "include": "#meta-tag-body-elements" }]
     },
-
-    "template-body-elements": {
+    "meta-tag-body-block": {
+      "name": "source.xjade.js",
+      "begin": "\\{",
+      "end": "(\\})",
+      "beginCaptures": {
+        "0": { "name": "meta.brace.curly.xjade" }
+      },
+      "endCaptures": {
+        "0": { "name": "meta.brace.curly.xjade" }
+      },
+      "patterns": [{ "include": "#meta-tag-body-elements" }]
+    },
+    "meta-tag-body-elements": {
       "patterns": [
         { "include": "#comment" },
         { "include": "#string" },
         { "include": "#tag" },
-        { "include": "#tag-inline" },
         { "include": "#tag-attributes" },
+        { "include": "#tag-body-block" },
         { "include": "#code-line" },
         { "include": "#code-block" },
-        { "include": "#code-text" }
+        { "include": "#code-text" },
+        { "include": "#meta-tag-body-block" },
+        { "include": "#meta-template-misc" }
       ]
     },
-
-
-    "code-line": {
-      "begin": "^\\s*-\\s+",
-      "end": "$",
-      "patterns": [
-        // { "include": "#expression" }
-        { "include": "#comment" },
-        { "include": "#string" },
-        { "include": "#regexp" },
-        { "include": "#misc-higlighting" }
-      ]
-    },
-    "code-block": {
-      "begin": "(\\{)",
-      "beginCaptures": {
-        "1": {"name": "meta.brace.curly.js"}
-      },
-      "end": "(\\})",
-      "endCaptures": {
-        "1": {"name": "meta.brace.curly.js"}
-      },
-      // "patterns": [{ "include": "#expression" }]
-      "patterns": [
-        { "include": "#comment" },
-        { "include": "#string" },
-        { "include": "#tag" },
-        { "include": "#tag-inline" },
-        { "include": "#tag-attributes" },
-        { "include": "#code-line" },
-        { "include": "#code-block" },
-        { "include": "#code-text" }
-      ]
-    },
-    "code-text": {
-      "begin": "(\\$)(\\{)",
-      "beginCaptures": {
-        "1": {"name": "keyword.operator.xjade"},
-        "2": {"name": "meta.brace.curly"}
-      },
-      "end": "(\\})",
-      "endCaptures": {
-        "1": {"name": "meta.brace.curly"}
-      },
-      "patterns": [{ "include": "#expression" }]
-    },
-
 
     "tag": {
       "match": "([a-zA-Z][a-zA-Z0-9_:-]*)?(#([a-zA-Z][a-zA-Z0-9_:-]*))?((\\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*)*)",
@@ -612,18 +591,6 @@
         "3": {"name": "meta.toc-list.id.xjade"},
         "4": {"name": "constant.language.class.xjade"}
       }
-    },
-    "tag-inline": {
-      "begin": "(#)(\\{)",
-      "beginCaptures": {
-        "1": {"name": "constant.language.directive.mark"},
-        "2": {"name": "meta.brace.curly"}
-      },
-      "end": "(\\})",
-      "endCaptures": {
-        "1": {"name": "meta.brace.curly"}
-      },
-      "patterns": [{ "include": "#template-body-elements" }]
     },
     "tag-attributes": {
       "name": "meta.expression.braces.square",
@@ -643,7 +610,7 @@
       ]
     },
     "tag-attribute-name": {
-      "match": "@?([a-zA-Z][a-zA-Z0-9_:.-]*)",
+      "match": "([a-zA-Z][a-zA-Z0-9_:.-]*)",
       "captures": {
         "1": {"name":"entity.other.attribute-name.xjade"}
       }
@@ -656,26 +623,61 @@
       "patterns": [
         { "include": "#string" },
         { "include": "#number" },
-        { "include": "#code-block" }
+        { "include": "#code-value" }
       ]
     },
 
-
-
-
-    "expression": {
-      "name": "meta.expression.js",
-      "comment": "The main building block",
+    "code-value": {
+      "name": "source.js",
+      "begin": "(\\()",
+      "beginCaptures": {
+        "1": {"name": "meta.brace.round.js"}
+      },
+      "end": "(\\))",
+      "endCaptures": {
+        "1": {"name": "meta.brace.round.js"}
+      },
+      "patterns": [{ "include": "#expression" }]
+    },
+    "code-line": {
+      "name": "source.js",
+      "begin": "^\\s*-\\s+",
+      "end": "$",
       "patterns": [
         { "include": "#comment" },
-        { "include": "#module-expression" },
-        { "include": "#class-expression" },
-        { "include": "#function" },
-        { "include": "#block" },
         { "include": "#string" },
         { "include": "#regexp" },
         { "include": "#misc-higlighting" }
       ]
+    },
+    "code-block": {
+      "name": "source.js",
+      "begin": "(\\{\\{)",
+      "beginCaptures": {
+        "1": {"name": "meta.brace.curly.xjade"}
+      },
+      "end": "(\\}\\})",
+      "endCaptures": {
+        "1": {"name": "meta.brace.curly.xjade"}
+      },
+      "patterns": [{ "include": "#expression" }]
+    },
+    "code-text": {
+      "name": "source.js",
+      "begin": "(\\$)(\\{)",
+      "beginCaptures": {
+        "1": {"name": "keyword.operator.xjade"},
+        "2": {"name": "meta.brace.curly"}
+      },
+      "end": "(\\})",
+      "endCaptures": {
+        "1": {"name": "meta.brace.curly"}
+      },
+      "patterns": [{ "include": "#expression" }]
+    },
+
+    "meta-template-misc": {
+      "match": "=|>"
     }
   },
 

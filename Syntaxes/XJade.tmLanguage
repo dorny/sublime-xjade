@@ -185,58 +185,32 @@
 		<key>code-block</key>
 		<dict>
 			<key>begin</key>
-			<string>(\{)</string>
+			<string>(\{\{)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.js</string>
+					<string>meta.brace.curly.xjade</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\})</string>
+			<string>(\}\})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>meta.brace.curly.js</string>
+					<string>meta.brace.curly.xjade</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-inline</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-attributes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-line</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-text</string>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>
@@ -246,6 +220,8 @@
 			<string>^\s*-\s+</string>
 			<key>end</key>
 			<string>$</string>
+			<key>name</key>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -293,6 +269,40 @@
 					<string>meta.brace.curly</string>
 				</dict>
 			</dict>
+			<key>name</key>
+			<string>source.js</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
+		<key>code-value</key>
+		<dict>
+			<key>begin</key>
+			<string>(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.round.js</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -400,7 +410,7 @@
 			<key>comment</key>
 			<string>The main building block</string>
 			<key>name</key>
-			<string>meta.expression.js</string>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -763,6 +773,84 @@
 			<key>name</key>
 			<string>storage.modifier.js</string>
 		</dict>
+		<key>meta-tag-body-block</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.curly.xjade</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\})</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.brace.curly.xjade</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>source.xjade.js</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#meta-tag-body-elements</string>
+				</dict>
+			</array>
+		</dict>
+		<key>meta-tag-body-elements</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-attributes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-body-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code-line</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#code-text</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-tag-body-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#meta-template-misc</string>
+				</dict>
+			</array>
+		</dict>
 		<key>meta-template-body</key>
 		<dict>
 			<key>begin</key>
@@ -791,9 +879,14 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#template-body-elements</string>
+					<string>#meta-tag-body-elements</string>
 				</dict>
 			</array>
+		</dict>
+		<key>meta-template-misc</key>
+		<dict>
+			<key>match</key>
+			<string>=|&gt;</string>
 		</dict>
 		<key>meta-variable-initializer</key>
 		<dict>
@@ -1322,7 +1415,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>@?([a-zA-Z][a-zA-Z0-9_:.-]*)</string>
+			<string>([a-zA-Z][a-zA-Z0-9_:.-]*)</string>
 		</dict>
 		<key>tag-attribute-value</key>
 		<dict>
@@ -1338,7 +1431,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#code-block</string>
+					<string>#code-value</string>
 				</dict>
 			</array>
 		</dict>
@@ -1393,41 +1486,6 @@
 			<key>name</key>
 			<string>constant.language.class.xjade</string>
 		</dict>
-		<key>tag-inline</key>
-		<dict>
-			<key>begin</key>
-			<string>(#)(\{)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>constant.language.directive.mark</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>meta.brace.curly</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(\})</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>meta.brace.curly</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#template-body-elements</string>
-				</dict>
-			</array>
-		</dict>
 		<key>template</key>
 		<dict>
 			<key>begin</key>
@@ -1460,44 +1518,6 @@
 				<dict>
 					<key>include</key>
 					<string>#meta-template-body</string>
-				</dict>
-			</array>
-		</dict>
-		<key>template-body-elements</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-inline</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-attributes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-line</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-text</string>
 				</dict>
 			</array>
 		</dict>
