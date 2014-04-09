@@ -894,7 +894,7 @@
 			<key>end</key>
 			<string>(?=\})</string>
 			<key>name</key>
-			<string>source.xjade</string>
+			<string>source.xjade.template</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1368,6 +1368,12 @@
 		</dict>
 		<key>tag-attribute-value</key>
 		<dict>
+			<key>begin</key>
+			<string>=</string>
+			<key>end</key>
+			<string>(?=[\s\]])</string>
+			<key>name</key>
+			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1381,6 +1387,12 @@
 				<dict>
 					<key>include</key>
 					<string>#code-round</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[a-zA-Z][a-zA-Z0-9_:-]*</string>
+					<key>name</key>
+					<string>variable.js</string>
 				</dict>
 			</array>
 		</dict>
@@ -1507,7 +1519,7 @@
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.js</string>
+	<string>source.xjade</string>
 	<key>uuid</key>
 	<string>a6009cd0-e8f6-4358-85ec-90c95b772b9d</string>
 </dict>

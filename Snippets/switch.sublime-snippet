@@ -6,6 +6,6 @@
 - }
 ]]></content>
 	<tabTrigger>switch</tabTrigger>
-	<scope>source.xjade</scope>
+	<scope>source.xjade.template</scope>
 	<description>- switch (…) {…}</description>
 </snippet>

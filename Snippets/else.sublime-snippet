@@ -4,6 +4,6 @@
 - }
 ]]></content>
 	<tabTrigger>else</tabTrigger>
-	<scope>source.xjade</scope>
+	<scope>source.xjade.template</scope>
 	<description>- else {…}</description>
 </snippet>

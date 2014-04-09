@@ -6,6 +6,6 @@
 - }
 ]]></content>
 	<tabTrigger>ife</tabTrigger>
-	<scope>source.xjade</scope>
+	<scope>source.xjade.template</scope>
 	<description>- if (…) {…} else {…}</description>
 </snippet>
