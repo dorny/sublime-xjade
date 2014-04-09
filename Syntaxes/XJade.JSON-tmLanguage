@@ -557,6 +557,7 @@
         { "include": "#tag" },
         { "include": "#tag-inline" },
         { "include": "#tag-attributes" },
+        { "include": "#tag-assignment" },
         { "include": "#code-line" },
         { "include": "#code-curly" },
         { "include": "#code-text" }
@@ -612,17 +613,17 @@
       "name": "constant.language.class.xjade"
     },
     "tag-attribute-value": {
-      "name": "source.js",
       "begin":"=",
       "end": "(?=[\\s\\]])",
       "patterns": [
-        { "include": "#string" },
-        { "include": "#number" },
-        { "include": "#code-round" },
-        {
-          "name": "variable.js",
-          "match": "[a-zA-Z][a-zA-Z0-9_:-]*"
-        }
+        { "include": "#expression" }
+      ]
+    },
+    "tag-assignment": {
+      "begin":"=\\s*",
+      "end":"\\s",
+      "patterns": [
+        { "include": "#expression" }
       ]
     },
 

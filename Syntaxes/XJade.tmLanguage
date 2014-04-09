@@ -867,6 +867,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#tag-assignment</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#code-line</string>
 				</dict>
 				<dict>
@@ -1353,6 +1357,20 @@
 			<key>match</key>
 			<string>([a-zA-Z][a-zA-Z0-9_:-]*)?(#([a-zA-Z][a-zA-Z0-9_:-]*))?((\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*)*)</string>
 		</dict>
+		<key>tag-assignment</key>
+		<dict>
+			<key>begin</key>
+			<string>=\s*</string>
+			<key>end</key>
+			<string>\s</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
 		<key>tag-attribute-name</key>
 		<dict>
 			<key>captures</key>
@@ -1372,27 +1390,11 @@
 			<string>=</string>
 			<key>end</key>
 			<string>(?=[\s\]])</string>
-			<key>name</key>
-			<string>source.js</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#number</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#code-round</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>[a-zA-Z][a-zA-Z0-9_:-]*</string>
-					<key>name</key>
-					<string>variable.js</string>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>
