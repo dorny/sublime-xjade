@@ -1184,6 +1184,12 @@
 					<key>name</key>
 					<string>meta.brace.square.js</string>
 				</dict>
+				<dict>
+					<key>match</key>
+					<string>@el\b</string>
+					<key>name</key>
+					<string>support.function.xjade</string>
+				</dict>
 			</array>
 		</dict>
 		<key>module-expression</key>

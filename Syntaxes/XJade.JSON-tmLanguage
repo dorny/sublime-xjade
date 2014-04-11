@@ -520,6 +520,10 @@
         {
           "name": "meta.brace.square.js",
           "match": "\\[|\\]"
+        },
+        {
+          "name": "support.function.xjade",
+          "match": "@el\\b"
         }
       ]
     },
