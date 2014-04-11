@@ -403,6 +403,30 @@
 			<key>name</key>
 			<string>comment.line.double-slash.js</string>
 		</dict>
+		<key>directive</key>
+		<dict>
+			<key>begin</key>
+			<string>@(for|if|else\s+if|else|each|for|while|switch|case)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.xjade</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>meta.control.flow.xjade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
 		<key>expression</key>
 		<dict>
 			<key>comment</key>
@@ -868,6 +892,10 @@
 				<dict>
 					<key>include</key>
 					<string>#tag-assignment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#directive</string>
 				</dict>
 				<dict>
 					<key>include</key>

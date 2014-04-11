@@ -1,11 +1,9 @@
 <snippet>
-	<content><![CDATA[- switch ($1) {
-	- case $2:
+	<content><![CDATA[@switch $1
+	@case $2
 		$0
-		- break;
-- }
 ]]></content>
 	<tabTrigger>switch</tabTrigger>
 	<scope>source.xjade.template</scope>
-	<description>- switch (…) {…}</description>
+	<description>@switch … case …</description>
 </snippet>

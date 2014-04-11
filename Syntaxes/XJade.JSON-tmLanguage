@@ -558,6 +558,7 @@
         { "include": "#tag-inline" },
         { "include": "#tag-attributes" },
         { "include": "#tag-assignment" },
+        { "include": "#directive" },
         { "include": "#code-line" },
         { "include": "#code-curly" },
         { "include": "#code-text" }
@@ -622,6 +623,18 @@
     "tag-assignment": {
       "begin":"=\\s*",
       "end":"\\s",
+      "patterns": [
+        { "include": "#expression" }
+      ]
+    },
+
+    "directive": {
+      "name": "meta.control.flow.xjade",
+      "begin": "@(for|if|else\\s+if|else|each|for|while|switch|case)",
+      "captures": {
+        "1": { "name": "storage.type.function.xjade" }
+      },
+      "end": "$",
       "patterns": [
         { "include": "#expression" }
       ]
