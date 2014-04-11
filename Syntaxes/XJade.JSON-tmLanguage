@@ -634,7 +634,7 @@
 
     "directive": {
       "name": "meta.control.flow.xjade",
-      "begin": "@(for|if|else\\s+if|else|each|for|while|switch|case)",
+      "begin": "@(for|if|else\\s+if|else|each|for|switch|case)",
       "captures": {
         "1": { "name": "storage.type.function.xjade" }
       },
