@@ -1407,16 +1407,10 @@
 		</dict>
 		<key>tag-attribute-name</key>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.attribute-name.xjade</string>
-				</dict>
-			</dict>
 			<key>match</key>
-			<string>@?([a-zA-Z][a-zA-Z0-9_:.-]*)</string>
+			<string>[a-zA-Z][a-zA-Z0-9_:.-]*</string>
+			<key>name</key>
+			<string>entity.other.attribute-name.xjade</string>
 		</dict>
 		<key>tag-attribute-value</key>
 		<dict>
@@ -1464,11 +1458,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-attribute-name</string>
+					<string>#tag-class-expr-name</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-conditional-class-name</string>
+					<string>#tag-property-name</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-attribute-name</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1476,12 +1474,27 @@
 				</dict>
 			</array>
 		</dict>
-		<key>tag-conditional-class-name</key>
+		<key>tag-class-expr-name</key>
 		<dict>
-			<key>match</key>
-			<string>\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*</string>
-			<key>name</key>
-			<string>constant.language.class.xjade</string>
+			<key>begin</key>
+			<string>(class)\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.xjade</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
+				</dict>
+			</array>
 		</dict>
 		<key>tag-inline</key>
 		<dict>
@@ -1517,6 +1530,19 @@
 					<string>#meta-tag-body-elements</string>
 				</dict>
 			</array>
+		</dict>
+		<key>tag-property-name</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.xjade</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:\.([a-zA-Z$_][a-zA-Z0-9$_]*))+</string>
 		</dict>
 		<key>template</key>
 		<dict>

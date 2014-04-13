@@ -602,20 +602,31 @@
       },
       "patterns": [
         { "include": "#comment" },
+        { "include": "#tag-class-expr-name" },
+        { "include": "#tag-property-name" },
         { "include": "#tag-attribute-name" },
-        { "include": "#tag-conditional-class-name" },
         { "include": "#tag-attribute-value" }
       ]
     },
-    "tag-attribute-name": {
-      "match": "@?([a-zA-Z][a-zA-Z0-9_:.-]*)",
+    "tag-class-expr-name": {
+      "begin": "(class)\\(",
+      "end": "\\)",
+      "beginCaptures": {
+          "1": { "name": "entity.other.attribute-name.xjade" }
+      },
+      "patterns": [
+        { "include": "#expression" }
+      ]
+    },
+    "tag-property-name": {
+      "match": "(?:\\.([a-zA-Z$_][a-zA-Z0-9$_]*))+",
       "captures": {
-        "1": {"name":"entity.other.attribute-name.xjade"}
+          "1": { "name":"entity.other.attribute-name.xjade" }
       }
     },
-    "tag-conditional-class-name": {
-      "match": "\\.-?[_a-zA-Z]+[_a-zA-Z0-9-]*",
-      "name": "constant.language.class.xjade"
+    "tag-attribute-name": {
+      "name":"entity.other.attribute-name.xjade",
+      "match": "[a-zA-Z][a-zA-Z0-9_:.-]*"
     },
     "tag-attribute-value": {
       "begin":"=",
