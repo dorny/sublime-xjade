@@ -406,7 +406,7 @@
 		<key>directive</key>
 		<dict>
 			<key>begin</key>
-			<string>@(for|if|else\s+if|else|each|for|switch|case)</string>
+			<string>@(for|if|else\s+if|else|each|for|switch|case|default)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
