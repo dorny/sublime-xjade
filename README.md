@@ -1,3 +1,7 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+**[DEPRECATED] - XJade project is deprecated.**
+
 # Sublime XJade
 
 A SublimeText package for the [XJade](https://github.com/dorny/xjade) template language.
